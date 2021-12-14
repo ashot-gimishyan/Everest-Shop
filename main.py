@@ -19,8 +19,8 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable=False)
     isAvailable = db.Column(db.Boolean, default=True)
 
-#    def __repr__(self):
-#        return self.name
+    def __repr__(self):
+        return self.name
 
 
 @app.route('/')
