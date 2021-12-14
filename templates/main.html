@@ -1,0 +1,24 @@
+{% extends 'father.html' %}
+{% block title %}
+<title>Интернет-магазин</title>
+{% endblock %}
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+   <h3> Магазин альпинистского снаряжения</h3>
+</div>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+   {% for elem in data %}
+   <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+         <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">{{ elem.name }}</h4>
+         </div>
+         <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{ elem.price }}<small class="text-muted fw-light">USD</small></h1>
+            <a href="/buy/{{ elem.id }}" class="btn btn-lg btn-block btn-outline-primary">Купить</a>
+         </div>
+      </div>
+   </div>
+   {% endfor %}
+</div>
+{% endblock %}
