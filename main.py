@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from cloudipsp import Api, Checkout
-
+import data
 
 # create and configure the app
 app = Flask(__name__)
@@ -33,13 +33,15 @@ def main():
 def about():
     return render_template('about.html')
 
+m_id=data.merchant_id
+s_key=data.secret_key
+
 
 @app.route('/buy/<int:id>')
 def buy(id):
     item = Item.query.get(id)
-
-    api = Api(merchant_id=1396424,
-              secret_key='test')
+    api = Api(merchant_id=m_id,
+              secret_key=s_key)
     checkout = Checkout(api=api)
     data = {
         "currency": "USD",
